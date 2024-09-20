@@ -4,6 +4,7 @@ public class MenuApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String userName = "";  // Para almacenar el nombre del usuario
+        int userAge = -1;
         int option = 0;
 
         while (option != 4) {
@@ -23,8 +24,8 @@ public class MenuApp {
                     System.out.println("Nombre registrado correctamente.");
                     break;
                 case 2:
-                    System.out.println("Opción 2: Introducir edad");
-                    // Aquí se puede implementar la funcionalidad para introducir la edad
+                    userAge = getUserAge(scanner);
+                    System.out.println("Edad registrada correctamente.");
                     break;
                 case 3:
                     System.out.println("Opción 3: Mostrar usuario");
@@ -46,5 +47,16 @@ public class MenuApp {
     public static String getUserName(Scanner scanner) {
         System.out.print("Por favor, introduzca su nombre: ");
         return scanner.nextLine();
+    }
+
+
+    // Método para solicitar y devolver la edad del usuario
+    public static int getUserAge(Scanner scanner) {
+        System.out.print("Por favor, introduzca su edad: ");
+        while (!scanner.hasNextInt()) {  // Validación para asegurarse de que el usuario ingrese un número
+            System.out.println("Entrada no válida. Introduzca un número entero para la edad.");
+            scanner.next();  // Descartar la entrada inválida
+        }
+        return scanner.nextInt();
     }
 }
