@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class MenuApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String userName = "";  // Para almacenar el nombre del usuario
         int option = 0;
 
         while (option != 4) {
@@ -18,8 +19,8 @@ public class MenuApp {
             
             switch (option) {
                 case 1:
-                    System.out.println("Opción 1: Introducir nombre");
-                    // Aquí se puede implementar la funcionalidad para introducir el nombre
+                    userName = getUserName(scanner);
+                    System.out.println("Nombre registrado correctamente.");
                     break;
                 case 2:
                     System.out.println("Opción 2: Introducir edad");
@@ -39,5 +40,11 @@ public class MenuApp {
         }
 
         scanner.close();
+    }
+
+    // Método para solicitar y devolver el nombre del usuario
+    public static String getUserName(Scanner scanner) {
+        System.out.print("Por favor, introduzca su nombre: ");
+        return scanner.nextLine();
     }
 }
